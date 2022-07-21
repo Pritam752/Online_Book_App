@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".MyBookFragment"
+    android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/select_pdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="100dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/pdf_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_pdf_24"
+                android:background="@drawable/button_shape"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:text="@string/select_pdf"
+               android:textAlignment="center"
+               android:textSize="18sp"
+               android:textStyle="bold"
+               android:textColor="@color/black"
+               android:layout_gravity="center"/>
+        </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:id="@+id/layout_BookTitle"
+                android:padding="5dp"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/edit_BookTitle"
+                    android:hint="Book Title" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <TextView-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:text="Select Pdf"-->
+<!--                android:textAlignment="center"-->
+<!--                android:id="@+id/edit_BookTitle"-->
+<!--                android:layout_marginTop="50dp"/>-->
+
+            <Button
+                android:id="@+id/Upload_pdf"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:text="Upload Pdf"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+

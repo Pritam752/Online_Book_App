@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">eBook Reader</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
+    <string name="todo">TODO</string>
+    <string name="line">|</string>
+    <string name="different_category">Different Category</string>
+    <string name="history">history</string>
+    <string name="java">java</string>
+    <string name="border_line">|\n|\n|</string>
+    <string name="History">History</string>
+    <string name="history_see_all">See All</string>
+    <string name="view_amp_add_your_book"><![CDATA[View & Add your Book]]></string>
+    <string name="select_pdf">Select Pdf</string>
+    <string name="see_all_history">See All History</string>
+    <string name="report_bugs">Report Bugs</string>
+    <string name="subject">Subject</string>
+    <string name="describe">Describe</string>
+    <string name="please_describe_your_problem">Please describe your problem</string>
+    <string name="add_screenShoTrs_optional">Add ScreenShorts(Optional):</string>
+    <string name="attachment">attachment</string>
+    <string name="report">Report</string>
+    <string name="history_item">history item</string>
+    <string name="your_favourite_list">Your Favourite List</string>
+    <string name="category">Category</string>
+</resources>
