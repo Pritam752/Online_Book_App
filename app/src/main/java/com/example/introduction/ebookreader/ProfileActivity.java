@@ -16,13 +16,15 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,7 +39,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -45,9 +50,11 @@ public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     DrawerLayout drawerLayout;
     CircleImageView picture;
-    FloatingActionButton btnEdit;
-    TextView profileName,profileEmail;
+    ImageView background;
+    ImageButton btnEdit,back;
+    TextView profileName,profileEmail,userName;
     Button btn_logout;
+    ImageSlider slider;
 
 
 
@@ -66,11 +73,19 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         picture=findViewById(R.id.profile_pic);
+        slider=findViewById(R.id.slider);
         btnEdit=findViewById(R.id.dp_edit);
         profileName=findViewById(R.id.name);
-        profileEmail=findViewById(R.id.email);
-        btn_logout=findViewById(R.id.logout);
-
+        userName=findViewById(R.id.userName);
+        profileEmail=findViewById(R.id.userEmail);
+        back=findViewById(R.id.backButton);
+//        btn_logout=findViewById(R.id.logout);
+        List<SlideModel>  slideModels=new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.slider1,null));
+        slideModels.add(new SlideModel(R.drawable.slider2,null));
+        slideModels.add(new SlideModel(R.drawable.slider3,null));
+        slideModels.add(new SlideModel(R.drawable.slider4,null));
+        slider.setImageList(slideModels);
         // home activity bottom navigation method
 
         auth = FirebaseAuth.getInstance();// instance creation for firebase authentication
@@ -86,12 +101,13 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 profileName.setText(value.getString("fName"));
+                userName.setText(value.getString("fName"));
                 profileEmail.setText(value.getString("Email"));
             }
         });
 
 
-        //BUTTON CLICK
+       // BUTTON CLICK
         btnEdit.setOnClickListener(view -> {
             if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(ProfileActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},REQUEST_CODE_STORAGE_PERMISSION);
@@ -100,9 +116,12 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
         });
-        btn_logout.setOnClickListener(view ->{
-            takeAction();
+        back.setOnClickListener(view -> {
+            onBackPressed();
         });
+//        btn_logout.setOnClickListener(view ->{
+//            takeAction();
+//        });
         StorageReference storageReference=storageRef.child("Users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

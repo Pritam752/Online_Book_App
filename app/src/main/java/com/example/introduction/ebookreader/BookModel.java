@@ -76,6 +76,11 @@ public class BookModel {
     public void setBuyLink(String buyLink) { this.buyLink = buyLink; }
 
 
+    public BookModel(String title, String thumbnail, String previewLink) {
+        this.title = title;
+        this.thumbnail = thumbnail;
+        this.previewLink = previewLink;
+    }
 
     //constructor for 11 parameters
     public BookModel(String id,String title, String subtitle, String publisher, String publishedDate,

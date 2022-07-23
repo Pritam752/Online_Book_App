@@ -3,19 +3,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="240dp"
+        android:layout_width="180dp"
+        android:layout_height="270dp"
         android:orientation="vertical"
-        android:background="@drawable/corners"
         android:layout_marginStart="10dp">
         <ImageView
             android:id="@+id/IVpopuler"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/corners"/>
         <TextView
             android:id="@+id/populer_title"
             android:layout_width="match_parent"

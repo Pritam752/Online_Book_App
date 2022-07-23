@@ -56,7 +56,7 @@ public class ReportActivity extends AppCompatActivity {
 
 
         backButton.setOnClickListener(view1 -> {
-            startActivity(new Intent(ReportActivity.this,MainActivity.class));
+            onBackPressed();
         });
 
         btSend.setOnClickListener(new View.OnClickListener() {

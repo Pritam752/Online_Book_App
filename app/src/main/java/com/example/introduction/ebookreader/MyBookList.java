@@ -2,11 +2,13 @@ package com.example.introduction.ebookreader;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -158,9 +160,8 @@ public class MyBookList extends AppCompatActivity {
 //                RecyclerView.VERTICAL,false));
 //        MyBookAdapter  listAdapter = new MyBookAdapter(getApplicationContext(),arrayList);
 //        recyclerView.setAdapter(listAdapter);
-        LinearLayoutManager posterManager = new LinearLayoutManager(this);
-        posterManager.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(posterManager);
+        GridLayoutManager gridLayoutManager= new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(gridLayoutManager);
         MyBookAdapter listAdapter = new MyBookAdapter(getApplicationContext(),arrayList);
         recyclerView.setAdapter(listAdapter);
 
@@ -172,7 +173,6 @@ public class MyBookList extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 if (item.getItemId() == R.id.home_menu) {
-                    Toast.makeText(getApplicationContext(), "Home panel is open", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MyBookList.this,MainActivity.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
@@ -183,25 +183,29 @@ public class MyBookList extends AppCompatActivity {
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
                 if (item.getItemId() == R.id.MyBook_menu) {
-                    Toast.makeText(getApplicationContext(), "MyBook panel is open", Toast.LENGTH_SHORT).show();
-                   //mailmepritam startActivity(new Intent(MyBookList.this,MyBookList.class));
+                   // Toast.makeText(getApplicationContext(), "MyBook panel is open", Toast.LENGTH_SHORT).show();
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+                if (item.getItemId() == R.id.history_menu) {
+                   // Toast.makeText(getApplicationContext(), "report panel is open", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MyBookList.this,SeeAllHistory.class));
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+                if (item.getItemId() == R.id.favourite_menu) {
+                    //Toast.makeText(getApplicationContext(), "rate panel is open", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MyBookList.this,FavouriteActivity.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
                 if (item.getItemId() == R.id.report_menu) {
-                    Toast.makeText(getApplicationContext(), "report panel is open", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "privacy panel is open", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MyBookList.this,ReportActivity.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
-                if (item.getItemId() == R.id.rate_menu) {
-                    Toast.makeText(getApplicationContext(), "rate panel is open", Toast.LENGTH_SHORT).show();
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-                if (item.getItemId() == R.id.privacy_menu) {
-                    Toast.makeText(getApplicationContext(), "privacy panel is open", Toast.LENGTH_SHORT).show();
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
+
                 return true;
             }
         });
+
     }
+
 }

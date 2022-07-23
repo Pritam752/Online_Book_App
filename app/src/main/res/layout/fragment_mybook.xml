@@ -31,16 +31,29 @@
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp">
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:text="@string/select_pdf"
-               android:textAlignment="center"
-               android:textSize="18sp"
-               android:textStyle="bold"
-               android:textColor="@color/black"
-               android:layout_gravity="center"/>
+            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_attach_file_24"
+                    tools:ignore="ContentDescription"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/select_pdf"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+            </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
         </LinearLayout>

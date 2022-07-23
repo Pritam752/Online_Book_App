@@ -83,7 +83,7 @@ public class FavouriteActivity extends AppCompatActivity {
 
 
     private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("favourite list", null);
         Type type = new TypeToken<ArrayList<BookModel>>() {}.getType();
@@ -101,6 +101,8 @@ public class FavouriteActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         favouriteView.setLayoutManager(layoutManager);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         BookAdapter adapter = new BookAdapter(bookModelArrayList, FavouriteActivity.this);
         favouriteView.setAdapter(adapter);
 

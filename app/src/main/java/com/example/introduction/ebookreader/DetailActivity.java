@@ -34,9 +34,9 @@ public class DetailActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     ArrayList<BookModel> favouriteList;
-    private  static  final String SHARED_PREF_NAME="myPref";
-    private  static  final String KEY_NAME="id";
-
+    private  static  final String SHARED_PREF_NAME="preferences";
+    private  static  final String KEY_NAME_FAVOURITE="favourite list";
+    private  static  final String KEY_NAME_HISTORY="History list";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,10 +82,13 @@ public class DetailActivity extends AppCompatActivity {
         IVback.setOnClickListener(view -> {
             onBackPressed();
         });
+//        favourite.setOnClickListener(view -> {
+//            loadData(SHARED_PREF_NAME,KEY_NAME);
+//            setInsertData();
+//            saveData(SHARED_PREF_NAME,KEY_NAME);
+//        });
 
-        loadData();
-        setInsertData();
-        saveData();
+
 //        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 //        editor=sharedPreferences.edit();
 //        editor.putString(KEY_NAME,id);
@@ -100,6 +103,9 @@ public class DetailActivity extends AppCompatActivity {
                 editor.apply();
                //favourite.setButtonDrawable(ic_favorite_border);
                 favourite.setChecked(true);
+                loadData(SHARED_PREF_NAME,KEY_NAME_FAVOURITE);
+                FavouriteSetInsertData();
+                saveData(SHARED_PREF_NAME,KEY_NAME_FAVOURITE);
             }
             else {
                 SharedPreferences.Editor editor=getSharedPreferences("save",MODE_PRIVATE).edit();
@@ -108,24 +114,33 @@ public class DetailActivity extends AppCompatActivity {
                  favourite.setChecked(false);
             }
         });
-    }
-    private void saveData() {
-        sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(favouriteList);
-        editor.putString("favourite list", json);
-        editor.apply();
+        loadData(SHARED_PREF_NAME,KEY_NAME_HISTORY);
+        HistorySetInsertData();
+        saveData(SHARED_PREF_NAME,KEY_NAME_HISTORY);
 
     }
-    private void setInsertData() {
+
+    private void HistorySetInsertData() {
         favouriteList.add(new BookModel(id,title,subTitle, publisher, publishedDate, description, pageCount, thumbnail,language, previewLink, buyLink));
     }
 
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+    private void saveData(String SHARED_PREF_NAME,String KEY_NAME) {
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         Gson gson = new Gson();
-        String json = sharedPreferences.getString("favourite list", null);
+        String json = gson.toJson(favouriteList);
+        editor.putString(KEY_NAME, json);
+        editor.apply();
+
+    }
+    private void FavouriteSetInsertData() {
+        favouriteList.add(new BookModel(id,title,subTitle, publisher, publishedDate, description, pageCount, thumbnail,language, previewLink, buyLink));
+    }
+
+    private void loadData(String SHARED_PREF_NAME,String KEY_NAME) {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString(KEY_NAME, null);
         Type type = new TypeToken<ArrayList<BookModel>>() {}.getType();
         favouriteList = gson.fromJson(json, type);
 

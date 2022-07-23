@@ -10,26 +10,41 @@
             android:id="@+id/profile_menu"
             android:icon="@drawable/ic_person_pin_24"
             android:title="Profile"/>
-        <item
-            android:id="@+id/MyBook_menu"
-            android:icon="@drawable/ic_menu_book_24"
-            android:title="My Books"/>
+
 
     </group>
     <group
         android:checkableBehavior="single">
         <item
-            android:id="@+id/report_menu"
-            android:icon="@drawable/ic_baseline_bug_report_24"
-            android:title="Roport bugs"/>
-        <item
-            android:id="@+id/rate_menu"
-            android:icon="@drawable/ic_baseline_star_rate_24"
-            android:title="Rate us App"/>
-        <item
-            android:id="@+id/privacy_menu"
-            android:icon="@drawable/ic_privacy_24"
-            android:title="Privacy Policy"/>
+            android:title="Section">
+            <menu>
+                <item
+                    android:id="@+id/MyBook_menu"
+                    android:icon="@drawable/ic_menu_book_24"
+                    android:title="My Books"/>
+
+
+                <item
+                    android:id="@+id/favourite_menu"
+                    android:icon="@drawable/ic_favorite_border"
+                    android:title="Favourite books"/>
+                <item
+                    android:id="@+id/history_menu"
+                    android:icon="@drawable/history"
+                    android:title="@string/History"/>
+            </menu>
+        </item>
+        <item android:title="Others">
+            <menu>
+                <item
+                    android:id="@+id/report_menu"
+                    android:icon="@drawable/ic_baseline_bug_report_24"
+                    android:title="Roport bugs"/>
+
+            </menu>
+
+        </item>
+
     </group>
 
 

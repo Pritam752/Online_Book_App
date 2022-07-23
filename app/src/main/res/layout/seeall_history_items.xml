@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/history_thumbnail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/history_previewLink"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/history_thumbnail"
+            android:ellipsize="end"
+            android:ems="3"
+            android:hint="previewLink"
+            android:lines="1"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/history_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_previewLink"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/history_thumbnail"
+            android:ellipsize="end"
+            android:ems="3"
+            android:gravity="start"
+            android:hint="title"
+            android:lines="1"
+            android:maxLines="1" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/history_clear"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/black"
+            android:src="@drawable/ic_baseline_clear_24" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

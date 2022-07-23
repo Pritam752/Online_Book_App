@@ -3,6 +3,7 @@ package com.example.introduction.ebookreader;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.helper.widget.Carousel;
@@ -36,6 +37,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.common.net.InternetDomainName;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,6 +52,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.victor.loading.book.BookLoading;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,13 +66,16 @@ public class MainActivity extends AppCompatActivity {
     NavigationView nav;
     ActionBarDrawerToggle toggle;
     DrawerLayout drawerLayout;
+    BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
     ImageView mic,Search_icon;
-    TextView Search_text;
+    TextView Search_text,divider1,divider2;
     ArrayList<infoModel> AuthorArrayList,posterArrayList;
     ArrayList<BookModel> PopulerArrayList;
     RecyclerView PosterRecyclerview,AuthorRecyclerView,PopularRecyclerView;
     CircleImageView profile_image;
+    BookLoading bookProcessBer;
+    AppBarLayout appBarLayout;
 
     StorageReference storageReference1;
     FirebaseFirestore firebaseFirestore;
@@ -89,11 +96,18 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         SideNavigationView();
+
+        bookProcessBer.start();
         firebaseAuth= FirebaseAuth.getInstance();// instance creation for firebase authentication
         firebaseFirestore = FirebaseFirestore.getInstance();
         storageReference1 = FirebaseStorage.getInstance().getReference();
 
         String userId=firebaseAuth.getCurrentUser().getUid();
+        bookProcessBer.setVisibility(View.VISIBLE);
+        appBarLayout.setVisibility(View.GONE);
+        divider1.setVisibility(View.GONE);
+        divider2.setVisibility(View.GONE);
+        bottomNavigationView.setVisibility(View.GONE);
 
 
         StorageReference storageReference=storageReference1.child("Users/"+userId+"/profile.jpg");
@@ -131,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
         popularGetData();
 
-
+        BottomNavigationView();
 
 
 
@@ -235,6 +249,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                     //recycler view for popularAdapter
                     posterRecyclerView();
+                    bookProcessBer.stop();
+                    bookProcessBer.setVisibility(View.GONE);
+                    appBarLayout.setVisibility(View.VISIBLE);
+                    divider1.setVisibility(View.VISIBLE);
+                    divider2.setVisibility(View.VISIBLE);
+                    bottomNavigationView.setVisibility(View.VISIBLE);
 
                 });
 
@@ -316,6 +336,11 @@ public class MainActivity extends AppCompatActivity {
         PopularRecyclerView=findViewById(R.id.PopularRecyclerView);
         PosterRecyclerview=findViewById(R.id.PosterRecyclerview);
         profile_image=findViewById(R.id.profile_image);
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bookProcessBer=findViewById(R.id.bookLoading);
+        divider1=findViewById(R.id.divider);
+        divider2=findViewById(R.id.dividerPoPuLer);
+        appBarLayout=findViewById(R.id.appBarLayout);
     }
 
     private void SideNavigationView() {
@@ -324,33 +349,33 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 if (item.getItemId() == R.id.home_menu) {
-                    Toast.makeText(getApplicationContext(), "Home panel is open", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), "Home panel is open", Toast.LENGTH_SHORT).show();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
 
                 if (item.getItemId() == R.id.profile_menu) {
-                    Toast.makeText(getApplicationContext(), "Profile panel is open", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), "Profile panel is open", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this,ProfileActivity.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
                 if (item.getItemId() == R.id.MyBook_menu) {
-                    Toast.makeText(getApplicationContext(), "MyBook panel is open", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "MyBook panel is open", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this,MyBookList.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
-                if (item.getItemId() == R.id.report_menu) {
-                    Toast.makeText(getApplicationContext(), "report panel is open", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this,ReportActivity.class));
+                if (item.getItemId() == R.id.history_menu) {
+                    //Toast.makeText(getApplicationContext(), "report panel is open", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,SeeAllHistory.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
-                if (item.getItemId() == R.id.rate_menu) {
+                if (item.getItemId() == R.id.favourite_menu) {
                     //Toast.makeText(getApplicationContext(), "rate panel is open", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this,FavouriteActivity.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
-                if (item.getItemId() == R.id.privacy_menu) {
+                if (item.getItemId() == R.id.report_menu) {
                     //Toast.makeText(getApplicationContext(), "privacy panel is open", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this,SeeAllHistory.class));
+                    startActivity(new Intent(MainActivity.this,ReportActivity.class));
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
                 return true;
@@ -358,7 +383,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    
+    private void BottomNavigationView() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home_menu:
+                        break;
+                    case R.id.search_menu:
+                        startActivity(new Intent(MainActivity.this,SearchActivity.class));
+                        break;
+                    case R.id.placeholder:
+                        startActivity(new Intent(MainActivity.this,MyBookList.class));
+                        break;
+                    case R.id.category_book:
+                        //startActivity(new Intent(MainActivity.this,MyBookList.class));
+                        break;
+                    case R.id.library_menu:
+                        startActivity(new Intent(MainActivity.this,FavouriteActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
+
+
+    }
+
+
+
 
 
 }

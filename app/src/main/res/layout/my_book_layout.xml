@@ -77,16 +77,16 @@
         android:layout_height="60dp"
         app:cardCornerRadius="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+       android:layout_centerHorizontal="true"
         android:layout_margin="30dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_add_24"
             android:layout_gravity="center"
+            android:contentDescription="@string/todo"
             android:padding="10dp"
-            android:contentDescription="@string/todo" />
+            android:src="@drawable/ic_baseline_add_24" />
 
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
