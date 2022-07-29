@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailActivity"
-    android:background="@drawable/details_background">
+    tools:context=".DetailActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFA115"
+        android:background="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <RelativeLayout
@@ -24,7 +23,7 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_gravity="start"
-                android:backgroundTint="#FFA115"
+                android:backgroundTint="@color/white"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/back" />
 
@@ -37,7 +36,7 @@
                 android:layout_toEndOf="@+id/IVBack"
                 android:text="Book Details"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="#FF9800"
                 android:textSize="23sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="105dp"
@@ -48,15 +47,7 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginBottom="0dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -84,7 +75,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="138dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginEnd="142dp" />
 
 
@@ -126,9 +117,128 @@
                     android:textStyle="normal" />
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!--button for displaying book preview-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/idBtnPreview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_shape"
+                            android:orientation="horizontal">
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:background="#0FFFFFFF"
+                                android:backgroundTint="#0FFFFFFF"
+                                android:src="@drawable/readbook" />
+
+                            <TextView
+                                android:layout_width="80dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="start"
+                                android:layout_margin="0dp"
+                                android:gravity="center"
+                                android:text="Read Now"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/idBtnSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/liner_background"
+                            android:orientation="horizontal">
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:background="#0FFFFFFF"
+                                android:backgroundTint="#0FFFFFFF"
+                                android:src="@drawable/addbook" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="0dp"
+                                android:gravity="center"
+                                android:text="Library"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/idBtnBuy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <!--button for opening buying page of the book-->
+                        <LinearLayout
+
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_shape"
+                            android:orientation="horizontal">
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:background="#0FFFFFFF"
+                                android:backgroundTint="#0FFFFFFF"
+                                android:src="@drawable/buybook" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="0dp"
+                                android:gravity="center"
+                                android:text="Buy Now"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/linear3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
@@ -237,49 +347,27 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/TVdescription"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:padding="10dp"
-                    android:text="description"
-                    android:textColor="#040000"
-                    android:textSize="12dp" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="0dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
 
-                    <!--button for displaying book preview-->
-                    <Button
-                        android:id="@+id/idBtnPreview"
-                        android:layout_width="12dp"
+                    <TextView
+                        android:id="@+id/TVdescription"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/btn_background"
-                        android:text="Read Now"
-                        android:textAllCaps="false" />
+                        android:layout_gravity="start"
+                        android:padding="10dp"
+                        android:text="description"
+                        android:textColor="#040000"
+                        android:textSize="12dp" />
 
-                    <!--button for opening buying page of the book-->
-                    <Button
-                        android:id="@+id/idBtnBuy"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/btn_background"
-                        android:text="Buy Now"
-                        android:textAllCaps="false" />
-
-                </LinearLayout>
-
+                </ScrollView>
             </LinearLayout>
         </RelativeLayout>
-    </ScrollView>
+
 
 </RelativeLayout>

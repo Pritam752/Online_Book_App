@@ -79,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
         userName=findViewById(R.id.userName);
         profileEmail=findViewById(R.id.userEmail);
         back=findViewById(R.id.backButton);
-//        btn_logout=findViewById(R.id.logout);
+        btn_logout=findViewById(R.id.logout);
         List<SlideModel>  slideModels=new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.slider1,null));
         slideModels.add(new SlideModel(R.drawable.slider2,null));
@@ -119,9 +119,9 @@ public class ProfileActivity extends AppCompatActivity {
         back.setOnClickListener(view -> {
             onBackPressed();
         });
-//        btn_logout.setOnClickListener(view ->{
-//            takeAction();
-//        });
+        btn_logout.setOnClickListener(view ->{
+            takeAction();
+        });
         StorageReference storageReference=storageRef.child("Users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

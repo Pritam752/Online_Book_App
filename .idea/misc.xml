@@ -57,8 +57,11 @@
         <entry key="..\:/Android/App Projects/eBookReader/app/src/main/res/menu/bottommenu.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App Projects/eBookReader/app/src/main/res/menu/menu_ber.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App Projects/eBookReader/app/src/main/res/menu/menu_bottom.xml" value="0.23229166666666667" />
+        <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable-v24/btn_background.xml" value="0.2385" />
+        <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable-v24/button_shape.xml" value="0.2385" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable-v24/ic_baseline_add_24.xml" value="0.108" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.2385" />
+        <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable-v24/liner_background.xml" value="0.2385" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable/corners.xml" value="0.108" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.2385" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.2385" />
@@ -67,6 +70,7 @@
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/activity_detail.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/activity_favourite.xml" value="0.25" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/activity_favourite_list.xml" value="0.23229166666666667" />
+        <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/activity_loginpage.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/activity_my_book_list.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/activity_profile.xml" value="0.23229166666666667" />
@@ -77,6 +81,7 @@
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/book_items.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/fragment_login_.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/fragment_mybook.xml" value="0.23229166666666667" />
+        <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/fragment_signup_.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/layout.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/my_book_items.xml" value="0.23229166666666667" />
         <entry key="..\:/Android/App_Projects/eBookReader/app/src/main/res/layout/my_book_layout.xml" value="0.23229166666666667" />

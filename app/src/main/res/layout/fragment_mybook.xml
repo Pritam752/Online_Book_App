@@ -18,24 +18,24 @@
             android:layout_gravity="center_horizontal">
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="100dp">
+            android:layout_height="150dp">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/pdf_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_pdf_24"
-                android:background="@drawable/button_shape"/>
+                android:background="@drawable/btn_background"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp">
+            android:layout_height="40dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="#B8B1B1">
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="30dp"
